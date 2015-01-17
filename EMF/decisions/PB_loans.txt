@@ -1,0 +1,5 @@
+# PB loans are now obsoleted by EMF's loan system
+
+# See:
+# - decisions/emf_loans_decisions.txt
+# - events/emf_loans.txt

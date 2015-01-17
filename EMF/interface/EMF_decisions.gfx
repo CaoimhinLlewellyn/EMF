@@ -24,6 +24,19 @@ spriteTypes = {
 		name = "GFX_emf_customize_mr"
 		texturefile = "gfx/interface/decision_icon_emf_customize_mr.tga"
 	}
+	# Loans
+	spriteType = {
+		name = "GFX_emf_toggle_loan_decisions"
+		texturefile = "gfx\\interface\\decision_icon_take_loan.tga"
+	}
+	spriteType = {
+		name = "GFX_emf_take_loan"
+		texturefile = "gfx\\interface\\decision_icon_take_loan.tga"
+	}
+	spriteType = {
+		name = "GFX_emf_repay_loan"
+		texturefile = "gfx\\interface\\decision_icon_repay_loan.tga"
+	}
 	# Muslim Holy Orders
 	spriteType = {
 		name = "GFX_donate_money_to_arsiyah"

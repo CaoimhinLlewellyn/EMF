@@ -1,0 +1,93 @@
+decisions = {
+
+	emf_toggle_loan_decisions = {
+		potential = {
+			ai = no
+			or = {
+				religion_group = christian
+				religion_group = muslim
+				religion_group = zoroastrian_group
+				religion_group = jewish_group
+				and = {
+					religion_group = pagan_group
+					is_reformed_religion = yes
+				}
+			}
+		}
+		allow = {
+		}
+		effect = {
+			if = {
+				limit = {
+					not = { has_character_flag = emf_toggle_loans }
+				}
+				set_character_flag = emf_toggle_loans
+				break = yes
+			}
+			clr_character_flag = emf_toggle_loans
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	emf_take_loan = {
+		potential = {
+			ai = no
+			has_character_flag = emf_toggle_loans
+			or = {
+				religion_group = christian
+				religion_group = muslim
+				religion_group = zoroastrian_group
+				religion_group = jewish_group
+				and = {
+					religion_group = pagan_group
+					is_reformed_religion = yes
+				}
+			}
+		}
+		allow = {
+		#	custom_tooltip = {
+		#		text = emf_ctt_take_loan # Also shows credit limit
+		#		hidden_tooltip = {
+					not = { check_variable = { which = debt which = max_debt } } # debt < max_debt
+		#		}
+		#	}
+			prisoner = no
+		}
+		effect = {
+			change_variable = { which = debt value = 50 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	emf_repay_loan = {
+		potential = {
+			ai = no
+			has_character_flag = emf_toggle_loans
+			or = {
+				religion_group = christian
+				religion_group = muslim
+				religion_group = zoroastrian_group
+				religion_group = jewish_group
+				and = {
+					religion_group = pagan_group
+					is_reformed_religion = yes
+				}
+			}
+		}
+		allow = {
+		}
+		effect = {
+			custom_tooltip = {
+				text = emf_ctt_repay_loan
+				hidden_tooltip = { character_event = { id = emf_loans.0 } }
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
