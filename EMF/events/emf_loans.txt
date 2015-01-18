@@ -1,0 +1,71 @@
+
+namespace = emf_loans
+
+# emf_loans.0
+#
+# Repay as much as I can [player]
+character_event = {
+	id = emf_loans.0
+	desc = HIDE_EVENT
+	hide_window = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = OK
+	}
+}
+
+
+# emf_loans.1
+#
+# Yearly prompt to either pay minimum (current interest % of total debt),
+# pay nothing (no more available credit until loans are paid, chance of
+# defaulting and reaping the consequences thereof, compounds interest),
+# or paying back as much as possible.
+character_event = {
+	id = emf_loans.1
+	desc = emf_loans.1.desc
+	picture = GFX_evt_bad_news
+	
+	ai = no
+	
+	trigger = {
+		had_character_flag = { flag = loan_timer days = 365 }
+	}
+	
+	immediate = {
+		clr_character_flag = loan_timer
+		set_character_flag = loan_timer
+		
+		# TODO: Calculate minimum payment and whether minimum payment is less than wealth
+	}
+	
+	option = {
+		name = emf_loans.1.opt.a # Pay nothing
+		# TODO
+	}
+
+	option = {
+		name = emf_loans.1.opt.b # Pay minimum
+
+		custom_tooltip = {
+			text = emf_ctt_loans_pay_minimum
+
+			hidden_tooltip = {
+				subtract_variable = { which = debt which = min_pay }
+			}
+		}
+	}
+
+	option = {
+		name = emf_loans.1.opt.a # Pay back as much as possible
+		trigger = {
+			# TODO: Minimum payment isn't greater than the available wealth
+		}
+		
+		hidden_tooltip = {
+			character_event = { id = emf_loans.0 }
+		}
+	}
+}
+
