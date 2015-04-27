@@ -1796,6 +1796,7 @@ character_event = {
 		name = OK
 		event_target:emf_patrician = {
 			create_family_palace = yes
+			set_character_flag = new_patrician
 		}
 	}
 }
