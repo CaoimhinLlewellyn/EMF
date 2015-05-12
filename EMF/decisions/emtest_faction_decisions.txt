@@ -1,0 +1,35 @@
+decisions = {	
+	emtest_faction_ultimatum = {
+		is_high_prio = yes
+		
+		potential = {
+			always = no
+			leads_faction = faction_emtest
+			liege = {
+				not = {
+					any_vassal = {
+						has_character_flag = emtest_faction
+						not = { in_faction = faction_emtest }
+					}
+				}
+			}
+		}
+		allow = {
+		}
+		revoke_allowed = {
+			always = no
+		}
+		effect = {
+			faction_emtest = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = emtest_faction_war
+					faction = faction_emtest
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}
